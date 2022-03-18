@@ -1,8 +1,16 @@
-
-
-
-SestaDemoNull();
+SortArray();
 // console.log('Hello da index.js');
+
+function SortArray() {
+    var c= [7,1,3,12,24,5,9];
+    console.log(typeof(c));
+    console.log(c.sort(function(a,b){
+        console.log(a);
+        console.log(b);
+        return a-b;
+    }));
+    console.log(c);
+}
 
 function HelloFunction(){
     console.log('Hello  da function');
