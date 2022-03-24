@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<div >, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Aggiunta elementi a una pagina</h1>
+    <div id="mioDiv">MioDiv</div>
+
+    <button id="mioBottone" type="button"> OK </button>
+    <button id="mioBottone2" type="button"> OK </button>
+
+    <script>
+
+        var bottone = document.getElementById("mioBottone");
+
+        bottone.addEventListener('click', function(){
+            var nuovoDiv= document.createElement("div");
+            nuovoDiv.innerText = "Mio Testo";
+            nuovoDiv.id = "nuovoElemento";
+            nuovoDiv.style.color = "white";
+            nuovoDiv.style.backgroundColor = "blue"; 
+            document.getElementById("mioDiv").appendChild(nuovoDiv)
+        });
+
+        var bottone2 = document.getElementById("mioBottone2");
+        bottone2.addEventListener('click', function(){
+            alert('ho schiacciato un bottone 2');
+        });
+
+
+        var mioDiv= document.getElementById("mioDiv");
+        mioDiv.addEventListener("mouseover", function(){
+            console.log("mouseover");
+            var nuovoElemento = document.getElementById("nuovoElemento");
+            if(nuovoElemento) {
+                nuovoElemento.style.color = "yellow";
+            }
+        })
+        mioDiv.addEventListener("mouseout", function(e){
+            console.log("mouseout");
+            console.log(e);
+            var nuovoElemento = document.getElementById("nuovoElemento");
+            if(nuovoElemento) {
+                nuovoElemento.style.color = "red";
+            }
+        })
+
+
+        ;
+
+        // setTimeout( function(){
+        //     document.getElementById("mioDiv").innerHTML = "<h1>Ciao</h1>";
+        // }, 2000);
+
+
+
+
+
+        // setInterval( function(){
+        // var nuovoElemento = document.createElement("p");
+        // nuovoElemento.innerText = "Mio Testo";
+        // nuovoElemento.style.color = "white";
+        // nuovoElemento.style.backgroundColor = "blue"; 
+
+        // var mioDiv = document.getElementById("mioDiv");
+        // if(mioDiv){
+        //     mioDiv.appendChild(nuovoElemento);
+        // }
+        // },1000);
+
+        // setTimeout(function(){
+        //     var body = document.body;
+        //     var div = document.getElementById("mioDiv");
+
+        //     var nuovoElemento = document.createElement("p");
+        // nuovoElemento.innerText = "Mio Testo";
+        // nuovoElemento.style.color = "white";
+        // nuovoElemento.style.backgroundColor = "red"; 
+
+
+        //     div.replaceChildren(nuovoElemento, null);
+        //     // body.removeChild(document.getElementById("mioDiv"));
+        // },10000);
+
+        
+    </script>
+</body>
+</html>

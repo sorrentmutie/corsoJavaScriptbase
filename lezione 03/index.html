@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body><div id="mioId" style="background-color: blanchedalmond;">Mio div <p>mio paragrafo</p></div>
+    <h1>Tag h1</h1><p>Paragrafo 1</p><h2>Tag h2</h1><p>Paragrafo 1</p><script>
+        // console.log("Sono nello script javascript");
+        // var numeroRandom = Math.random(1,100);
+        // console.log(numeroRandom);
+        // console.log(this);
+        //alert("Allarme");
+        console.log(document);
+
+        var oggetto = {
+            nome: 'Salvatore',
+            cognome: 'Sorrentino'
+        };
+
+       // console.log(oggetto.nome);
+
+        var body = document.body;
+        // console.log(body);
+        var mioHead = document.head;
+        // console.log(mioHead);
+        var mioHtml = document.documentElement;
+        // console.log(mioHtml);
+
+        var nodi = document.childNodes;
+        //console.log(nodi);
+        var html = nodi[1];
+        // console.log(html);
+        var figliHtml = html.childNodes;
+        // console.log(figliHtml);
+        
+        var figliDelBody = body.childNodes;
+        // console.log(figliDelBody);
+        var mioDiv = figliDelBody[0];
+        console.log(mioDiv.style);
+        console.log(mioDiv.id);
+
+        var figliDelDiv = mioDiv.childNodes;
+        console.log(figliDelDiv);
+
+
+        var mioDivPresoDaId = document.getElementById("mioId");
+        console.log(mioDivPresoDaId);
+        mioDivPresoDaId.style.backgroundColor = "red";
+
+    </script>
+</body>
+</html>
