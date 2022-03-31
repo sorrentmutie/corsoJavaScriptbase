@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div id="mioSecondoDiv">Buongiorno</div>
+    <div id="mioDiv">Ciao</div>
+    <button id="mioBottone">OK</button>
+    <script>
+        const mioDiv = document.getElementById("mioDiv");
+        const mioSecondoDiv = document.getElementById("mioSecondoDiv");
+
+        const mioBottone = document.getElementById("mioBottone");
+
+        mioBottone.addEventListener('click', function(){
+            requestAnimationFrame(miaFunzioneDiAnimazione);
+        });
+
+
+        let spostamento = 0;
+
+        function myRGB(r,g,b) {
+            return ["rgb(", r,",",g,",",b,")"].join("");
+        }
+
+        function miaSecondaFunzioneDiAnimazione(timestamp) {
+            console.log('sono nella seconda animazione');
+           // mioSecondoDiv.style.backgroundColor = "rgb(100,100,100)";
+           if(timestamp < 255) {
+                mioSecondoDiv.style.backgroundColor = myRGB(timestamp-255,timestamp-255,timestamp-255);
+                requestAnimationFrame(miaSecondaFunzioneDiAnimazione);
+           }
+        }
+
+        function miaFunzioneDiAnimazione(timestamp){
+            console.log('Sono nella funzione di animazione');
+            console.log(timestamp);
+            spostamento += 5;
+          //  mioDiv.style.left = spostamento + 'px';
+         //  mioDiv.style.transform = "translateY(" + spostamento + 'px)' ;
+         //   mioDiv.style.transform = "translateX(" + spostamento + 'px)' ;
+        mioDiv.style.transform = "translate(" + spostamento + 'px,' + spostamento + 'px)' ;
+
+            if(timestamp < 5000) {
+                requestAnimationFrame(miaFunzioneDiAnimazione);
+            }
+        }
+
+        // const idInterval = setInterval( function(){
+        //     spostamento += 5;
+        //     if(spostamento < 500) {
+        //         mioDiv.style.left = spostamento + 'px';
+        //     } else {
+        //         clearInterval(idInterval);
+        //     }
+        // } , 50);
+        requestAnimationFrame(miaFunzioneDiAnimazione);
+        requestAnimationFrame(miaSecondaFunzioneDiAnimazione);
+
+
+    </script>
+</body>
+</html>

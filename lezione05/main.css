@@ -1,0 +1,14 @@
+#mioDiv {
+    border: 1px solid  red;
+    padding: 5px;
+    width: 200px;
+    height: 200px;
+    position: relative;
+}
+
+#mioSecondoDiv {
+    border: 1px solid  green;
+    padding: 5px;
+    width: 200px;
+    height: 200px;
+}

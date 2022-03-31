@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="saluto">Dove mi trovo?</div>
+    <div id="posizione"></div>
+    <img id="mappa"
+
+        src="https://www.mapquestapi.com/staticmap/v5/map?key=USATEVOSTRACHIAVE&center=37.7749,-122.4194&size=@2x">
+
+    <script>
+      // console.log(this);
+      // localStorage.setItem("nome", "Salvatore");
+
+       const nome = localStorage.getItem("nome");
+
+       const mioDiv = document.getElementById("posizione");
+       let urlBase = "https://www.mapquestapi.com/staticmap/v5/map?key=hT9kmZMHbQZ7azXnspX1QvfydvZMzGSp&center=";
+       
+       const saluto = document.getElementById("saluto");
+       saluto.innerText = "Ciao, " + nome + "! Ecco dove ti trovi";
+       
+       //37.7749,-122.4194&size=@2x";
+
+       // console.log(this);
+       if('geolocation' in navigator) {
+           console.log('A');
+           navigator.geolocation.getCurrentPosition(posizioneTrovata, posizioneNonTrovata);
+           console.log('C');
+       }
+
+
+       function posizioneTrovata(posizione) {
+        console.log('B');
+        console.log('posizione trovata');
+        console.log(posizione);
+        const latitudine = posizione.coords.latitude;
+        const longitudine = posizione.coords.longitude;
+        console.log(latitudine);
+        console.log(longitudine);
+        const paragrafo = document.createElement("p");
+        const paragrafoLongitudine = document.createElement("p");
+        paragrafo.innerText = "latitudine: " + latitudine;
+        paragrafoLongitudine.innerText = "longitudine: " + longitudine;
+
+
+        const urlFinale = urlBase + latitudine + "," + longitudine
+           + "&size=@2x";       //37.7749,-122.4194&size=@2x";
+
+        const mappa = document.getElementById("mappa");
+        mappa.src = urlFinale;
+
+        mioDiv.appendChild(paragrafo);
+        mioDiv.append(paragrafoLongitudine);
+       }
+
+       function posizioneNonTrovata(errore) {
+           console.log('posizione non trovata');
+           console.log(errore);
+           const paragrafo = document.createElement("p");
+           paragrafo.innerText = "Errore! " + errore.message;
+           mioDiv.appendChild(paragrafo);
+       }
+
+    </script>
+</body>
+</html>
