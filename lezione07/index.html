@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="esercizio1.js"></script>
+    <script src="esercizio2.js"></script>
+    <script src="esercizio3.js"></script>
+    <script>
+
+        // const mioTuttoOk = function(saluto) {
+        //     console.log(saluto);
+        // }
+
+        // const mioTuttoOk2 = function(saluto) {
+        //     console.log("Messaggio arrivato: " + saluto);
+        // }
+
+        // const mioErrore = function(errore) {
+        //     console.log('Errore: ' + errore);
+        // }
+
+        // secondaPromise.then(mioTuttoOk2, mioErrore);
+        // secondaPromise.then(
+        //     function(saluto) {
+        //     console.log("Messaggio arrivato: " + saluto);
+        //     }, 
+        //     function(errore){
+        //     console.log('Errore: ' + errore);
+        //     }
+        // );
+
+    //   const chiediAMamma = function() {
+    //     laMammaCompreraUnTelefono
+    //         .then( function(regalo) {
+    //             console.log('Ho ricevuto un telefono ' + regalo.modello);
+    //         })
+    //         .catch( function(errore) { 
+    //             console.log(errore);
+    //         })
+    //   };
+
+      // chiediAMamma();
+
+    // const chiedoAMammaEMostroAgliAmici = function(){
+    //     laMammaCompreraUnTelefono
+    //         .then(mostraUnTelefonoAgliAmici)
+    //         .then(function(messaggio) {
+    //             console.log('sono nel resolve del secondo then ' + messaggio)
+    //         })
+    //         .catch(function(error){
+    //             console.log(error);
+    //         });
+    // }
+
+//     const chiedoAMammaEMostroAgliAmici = () =>
+//         laMammaCompreraUnTelefono
+//             .then(mostraUnTelefonoAgliAmici)
+//             .then(messaggio => console.log('sono nel resolve del secondo then ' + messaggio))
+//             .catch(error => console.log(error));
+    
+
+//    chiedoAMammaEMostroAgliAmici();
+
+  const miaRichiesta = fetch("https://jsonplaceholder.typicode.com/posts");
+  //console.log(miaRichiesta);
+//  const dati =  miaRichiesta
+//    .then(response => response.json())
+//    .then(json => console.log(json))
+//    .catch(errore => "Indirizzo sbagliato");
+
+// console.log(dati);
+
+
+const analizzaDati = dati => {
+    console.log(dati.length);
+    
+    // const elementiPari = dati.filter(
+    //     function(dato) {
+    //         const pari = dato.id % 2 === 0;
+    //         return pari === true;
+    //     }
+    // );
+
+
+    const elementiPari = dati.filter(dato => dato.id % 2 === 0);
+    const elementiDispari = dati.filter(dato => dato.id % 2 !== 0);
+
+    const elementiConTitoloCheIniziaConA =
+       dati.filter( dato => dato.title.toUpperCase().startsWith('A'));
+
+    
+    const elementiMappati = 
+       dati.map ( dato => new ElementoMappato(dato.id, dato.title)   
+   );
+
+
+    console.log(elementiMappati);
+};
+
+class ElementoMappato {
+    constructor(id, titolo){
+        this.id = id;
+        this.titolo = titolo;
+    }
+}
+
+const dati =  miaRichiesta
+   .then(response => response.json())
+   .then(analizzaDati)
+   .catch(errore => "Indirizzo sbagliato");
+
+// var p = new Person();
+
+    </script>
+</body>
+</html>
